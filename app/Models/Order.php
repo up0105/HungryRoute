@@ -13,7 +13,7 @@ class Order extends Model
         'toppings' => 'array',
     ];
 
-    protected $appends = ['chef'];
+    protected $appends = ['chef', 'last_updated'];
 
     protected $hidden = ['user'];
 
@@ -28,10 +28,15 @@ class Order extends Model
     {
         return $this->user->name;
     }
-    
+
     // Pirce in currency format
     public function getPriceAttribute($value)
     {
-        return $this->attributes['price']. ' ₹';
+        return $this->attributes['price'] . ' ₹';
+    }
+
+    public function getLastUpdatedAttribute()
+    {
+        return $this->updated_at->diffForHumans();
     }
 }

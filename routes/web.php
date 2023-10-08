@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/order/create', [OrderController::class, 'create'])->name('order.create');
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
     Route::get('/order/{order}', [OrderController::class, 'show'])->name('order.show');
+    Route::get('/order/{order}/stream', [OrderController::class, 'stream'])->name('order.stream');
     Route::get('/order/{order}/edit', [OrderController::class, 'edit'])->name('order.edit');
     Route::patch('/order/{order}', [OrderController::class, 'update'])->name('order.update');
 });

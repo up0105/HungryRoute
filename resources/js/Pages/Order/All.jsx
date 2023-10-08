@@ -8,6 +8,7 @@ export default function All({ auth, orders }) {
     const columns = [
         'size',
         'chef',
+        'sauce',
         'price',
         'instructions',
         'status',
