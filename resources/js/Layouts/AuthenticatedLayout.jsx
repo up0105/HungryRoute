@@ -5,7 +5,7 @@ import NavLink from '@/Components/NavLink';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink';
 import { Link } from '@inertiajs/react';
 
-export default function Authenticated({ user, header, children }) {
+export default function Authenticated({ user, header, children, action = null }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
     return (
@@ -118,7 +118,18 @@ export default function Authenticated({ user, header, children }) {
                 </div>
             </nav>
 
-            {header && (
+            {/* Create Header and Create Action Button In One Line */}
+            {header && action && (
+                <header className="bg-white dark:bg-gray-800 shadow">
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
+                        <h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">{header}</h2>
+                        <Link href={route(action)} className="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                            Create
+                        </Link>
+                    </div>
+                </header>
+            )}
+            {header && action == null && (
                 <header className="bg-white dark:bg-gray-800 shadow">
                     <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
                 </header>
